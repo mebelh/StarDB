@@ -1,0 +1,19 @@
+.person-details {
+    margin-top: 20px;
+    border: 2px solid black;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+}
+
+.person-details img {
+    width: 120px;
+    height: 146px;
+    margin-right: 2vw;
+    margin-left: 15px;
+}
+
+.person-details ul {
+    list-style: none;
+}

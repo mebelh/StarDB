@@ -1,0 +1,19 @@
+.item-list {
+    margin-top: 20px;
+    background-color: #dddcdc;
+    width: 400px
+}
+
+.item-list ul li {
+    border: 2px solid;
+}
+
+.item-list table {
+    width: 100%;
+
+}
+
+.item-list table tr td {
+    border: 2px solid #b3b3b3;
+    padding: 2%;
+}
