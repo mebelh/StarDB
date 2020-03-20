@@ -1,0 +1,11 @@
+.ErrorIndicator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ErrorIndicator h2 {
+    color: #ff5e00;
+}

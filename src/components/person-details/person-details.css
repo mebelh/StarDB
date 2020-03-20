@@ -4,7 +4,8 @@
     height: 150px;
     display: flex;
     flex-direction: row;
-    width: 450px;
+    width: 50%;
+    left: 0;
 }
 
 .person-details img {

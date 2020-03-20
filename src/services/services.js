@@ -10,10 +10,10 @@ export default class SwapiService {
         return await res.json();
     }
 
-    async getAllPeople() {
+    getAllPeople = async () => {
         const res = await this.getResourse(`/people/`);
         return res.results.map(this._transformPersonData);
-    }
+    };
 
     async getPerson(id) {
         const person = await this.getResourse(`/people/${id}`);
@@ -32,19 +32,21 @@ export default class SwapiService {
 
     async getAllStarships() {
         const res = await this.getResourse(`/starships`);
-        return res.results;
+        return res.results.map(this._transformStarshipData);
     }
 
-    getStarship(id) {
-        return this.getResourse(`/starship/${id}`);
+    async getStarship(id) {
+        const starship = await this.getResourse(`/starship/${id}`);
+        return this._transformStarshipData(starship);
     }
 
     _extractId(item) {
-        const idRegExp = /\/([0-9]*)\/$/gm;
-        return item.url.match(idRegExp)[1];
+        const idRegExp = /\/[0-9]*\/$/gm;
+
+        return item.url.match(idRegExp)[0].slice(1, -1);
     }
 
-    _transformPlanetData(planet) {
+    _transformPlanetData = planet => {
         return {
             id: this._extractId(planet),
             name: planet.name,
@@ -52,9 +54,9 @@ export default class SwapiService {
             rotationPer: planet.rotation_period,
             diameter: planet.diameter
         };
-    }
+    };
 
-    _transformStarshipData(starship) {
+    _transformStarshipData = starship => {
         return {
             id: this._extractId(starship),
             name: starship.name,
@@ -66,9 +68,9 @@ export default class SwapiService {
             passengers: starship.passengers,
             cargoCapacity: starship.cargoCapacity
         };
-    }
+    };
 
-    _transformPersonData(person) {
+    _transformPersonData = person => {
         return {
             id: this._extractId(person),
             name: person.name,
@@ -76,5 +78,5 @@ export default class SwapiService {
             birthYear: person.birthYear,
             eyeColor: person.eyeColor
         };
-    }
+    };
 }

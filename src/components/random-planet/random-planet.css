@@ -1,21 +1,44 @@
 .random-planet {
+    margin-top: 20px;
     border: 2px solid black;
-    height: 125px;
+    height: 182px;
     display: flex;
     justify-content: start;
-    width: 450px;
+    width: 100%;
 }
 
+.random-planet h2 {
+    font-size: 2rem;
+}
+
+.random-planet .random-planet__img {
+    height: 160px;
+    width: 160px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-size: unset;
+    background-image: url('https://starwars-visualguide.com/assets/img/big-placeholder.jpg');
+    background-repeat: "no-repeat";
+    background-position: center;
+}
 
 .random-planet .random-planet__planet-info {
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+}
+
+.random-planet .random-planet__planet-info span {
+    font-size: 1.2rem;
 }
 
 .random-planet img {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
     margin-right: 2vw;
-    margin-left: 0px;
 }
 
 ul {

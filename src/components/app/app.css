@@ -3,4 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 770px;
+}
+
+.persons-persondetails {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }

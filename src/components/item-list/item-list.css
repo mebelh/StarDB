@@ -1,19 +1,14 @@
 .item-list {
     margin-top: 20px;
+    margin-right: 20px;
     background-color: #dddcdc;
-    width: 400px
+    width: 50%
 }
 
 .item-list ul li {
     border: 2px solid;
 }
 
-.item-list table {
-    width: 100%;
-
-}
-
-.item-list table tr td {
-    border: 2px solid #b3b3b3;
-    padding: 2%;
+.item-list ul li:hover {
+    background-color: #e2e2e2;
 }
