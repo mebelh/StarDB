@@ -8,8 +8,15 @@ export default class ItemList extends Component {
         peopleList: []
     };
 
+    ggg = new SwapiService();
+
     componentDidMount() {
-        this.swapiService.getAllPeople().then(peopleList => {
+        const { getData } = this.props;
+
+        console.log(getData);
+        window.getData = getData;
+
+        getData().then(peopleList => {
             this.setState({
                 peopleList: peopleList
             });

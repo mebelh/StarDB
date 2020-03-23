@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import SwapiService from "../../services/services";
 import Spiner from "../loading/index";
 import "./person-details.css";
+import SwapiService from "../../services/services";
 
 export default class PersonDetails extends Component {
-    swapiService = new SwapiService();
-
     state = {
         person: null
     };
 
+    ggg = new SwapiService();
+
     updatePerson = () => {
-        const { personId } = this.props;
+        const { personId, getData } = this.props;
 
         if (!personId) {
             return;
@@ -19,7 +19,7 @@ export default class PersonDetails extends Component {
         this.setState({
             person: null
         });
-        this.swapiService.getPerson(personId).then(person => {
+        getData(personId).then(person => {
             this.setState({ person });
         });
     };

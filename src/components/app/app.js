@@ -33,13 +33,13 @@ export default class App extends Component {
                         onItemSelected={this.onPersonSelected}
                         getData={this.swapiService.getAllPeople}
                     />
-                    <PersonDetails personId={this.state.selectedPerson} />
+                    <PersonDetails
+                        personId={this.state.selectedPerson}
+                        getData={this.swapiService.getPerson}
+                    />
                 </div>
 
-                <div className="persons-persondetails">
-                    <ItemList onItemSelected={this.onPersonSelected} />
-                    <PersonDetails personId={this.state.selectedPerson} />
-                </div>
+                <ItemList getData={this.swapiService.getAllPlanets} />
             </div>
         );
     }
