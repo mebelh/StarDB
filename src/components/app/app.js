@@ -7,11 +7,14 @@ import PlanetDetails from "../planet-details/index";
 import RandomPlanet from "../random-planet/index";
 import StarshipDetails from "../starship-details/index";
 import "./app.css";
+import SwapiService from "../../services/services";
 
 export default class App extends Component {
     state = {
         selectedPerson: 1
     };
+
+    swapiService = new SwapiService();
 
     onPersonSelected = id => {
         this.setState({
@@ -24,6 +27,15 @@ export default class App extends Component {
             <div className="app-container container">
                 <Header />
                 <RandomPlanet />
+
+                <div className="persons-persondetails">
+                    <ItemList
+                        onItemSelected={this.onPersonSelected}
+                        getData={this.swapiService.getAllPeople}
+                    />
+                    <PersonDetails personId={this.state.selectedPerson} />
+                </div>
+
                 <div className="persons-persondetails">
                     <ItemList onItemSelected={this.onPersonSelected} />
                     <PersonDetails personId={this.state.selectedPerson} />

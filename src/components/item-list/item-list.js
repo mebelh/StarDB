@@ -4,8 +4,6 @@ import "./item-list.css";
 import Spinner from "../loading/index";
 
 export default class ItemList extends Component {
-    swapiService = new SwapiService();
-
     state = {
         peopleList: []
     };
