@@ -1,7 +1,7 @@
 .person-details {
     margin-top: 20px;
     border: 2px solid black;
-    height: 150px;
+    height: 220px;
     display: flex;
     flex-direction: row;
     width: 50%;
@@ -9,10 +9,15 @@
 }
 
 .person-details img {
-    width: 120px;
-    height: 146px;
+    width: 160px;
+    height: 195px;
+    margin-top: 10px;
     margin-right: 2vw;
-    margin-left: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 0 black;
+    border: 2px solid black;
 }
 
 .person-details ul {

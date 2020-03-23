@@ -1,12 +1,15 @@
 .item-list {
     margin-top: 20px;
     margin-right: 20px;
-    background-color: #dddcdc;
-    width: 50%
+    /* background-color: #dddcdc; */
+    width: 50%;
+    border: 2px solid;
+
 }
 
 .item-list ul li {
-    border: 2px solid;
+    /* border-bottom: 2px solid; */
+    cursor: pointer;
 }
 
 .item-list ul li:hover {

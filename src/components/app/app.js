@@ -9,14 +9,24 @@ import StarshipDetails from "../starship-details/index";
 import "./app.css";
 
 export default class App extends Component {
+    state = {
+        selectedPerson: 1
+    };
+
+    onPersonSelected = id => {
+        this.setState({
+            selectedPerson: id
+        });
+    };
+
     render() {
         return (
             <div className="app-container container">
                 <Header />
                 <RandomPlanet />
                 <div className="persons-persondetails">
-                    <ItemList />
-                    <PersonDetails />
+                    <ItemList onItemSelected={this.onPersonSelected} />
+                    <PersonDetails personId={this.state.selectedPerson} />
                 </div>
             </div>
         );
