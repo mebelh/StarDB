@@ -1,49 +1,49 @@
 import React, { Component } from "react";
 import Spiner from "../loading/index";
-import "./person-details.css";
+import "./item-details.css";
 
-export default class PersonDetails extends Component {
+export default class itemDetails extends Component {
     state = {
-        person: null
+        item: null
     };
 
-    updatePerson = () => {
-        const { personId, getData } = this.props;
+    updateitem = () => {
+        const { itemId, getData } = this.props;
 
-        if (!personId) {
+        if (!itemId) {
             return;
         }
         this.setState({
-            person: null
+            item: null
         });
-        getData(personId).then(person => {
-            this.setState({ person });
+        getData(itemId).then(item => {
+            this.setState({ item });
         });
     };
 
     componentDidMount() {
-        this.updatePerson();
+        this.updateitem();
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.personId !== prevProps.personId) {
-            this.updatePerson();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.updateitem();
         }
     }
 
     render() {
-        if (!this.state.person) {
+        if (!this.state.item) {
             return (
-                <div className="person-details">
+                <div className="item-details">
                     <Spiner />
                 </div>
             );
         }
 
-        const { id, name, gender, birthYear, eyeColor } = this.state.person;
+        const { id, name, gender, birthYear, eyeColor } = this.state.item;
 
         return (
-            <div className="person-details">
+            <div className="item-details">
                 <img
                     src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
                     alt="img"
