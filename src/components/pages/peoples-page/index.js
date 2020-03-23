@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ItemList from "../../item-list/index";
-import PersonDetails from "../../person-details/index";
+import PersonDetails from "../../item-details/index";
 export default class PeoplesPage extends Component {
     render() {
         return (

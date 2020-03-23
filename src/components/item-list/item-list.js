@@ -1,30 +1,26 @@
 import React, { Component } from "react";
-import SwapiService from "../../services/services";
 import "./item-list.css";
 import Spinner from "../loading/index";
 
 export default class ItemList extends Component {
     state = {
-        peopleList: []
+        itemList: []
     };
-
-    ggg = new SwapiService();
 
     componentDidMount() {
         const { getData } = this.props;
 
-        console.log(getData);
-        window.getData = getData;
-
-        getData().then(peopleList => {
+        getData().then(itemList => {
             this.setState({
-                peopleList: peopleList
+                itemList
             });
         });
     }
 
     renderItems = arr => {
-        return arr.map(({ id, name }) => {
+        return arr.map(item => {
+            const { id } = item;
+            const label = this.props.renderItem(item);
             return (
                 <li
                     className="list-group-item d-flex justify-content-between align-items-center"
@@ -33,20 +29,16 @@ export default class ItemList extends Component {
                         this.props.onItemSelected(id);
                     }}
                 >
-                    {name}
+                    {label}
                 </li>
             );
         });
     };
 
     render() {
-        const { peopleList } = this.state;
+        const { itemList } = this.state;
         const items =
-            peopleList.length === 0 ? (
-                <Spinner />
-            ) : (
-                this.renderItems(peopleList)
-            );
+            itemList.length === 0 ? <Spinner /> : this.renderItems(itemList);
 
         return (
             <div className="item-list">

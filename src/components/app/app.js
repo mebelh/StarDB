@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Header from "../header/index";
 import ItemList from "../item-list/index";
-import PersonDetails from "../person-details/index";
+import ItemDetails from "../item-details/index";
 import PlanetDetails from "../planet-details/index";
 import RandomPlanet from "../random-planet/index";
 import StarshipDetails from "../starship-details/index";
@@ -27,19 +27,52 @@ export default class App extends Component {
             <div className="app-container container">
                 <Header />
                 <RandomPlanet />
-
                 <div className="persons-persondetails">
                     <ItemList
                         onItemSelected={this.onPersonSelected}
                         getData={this.swapiService.getAllPeople}
+                        renderItem={item => {
+                            return (
+                                <span
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "100%"
+                                    }}
+                                >
+                                    <span>{item.name}</span>
+                                    <span>{item.birthYear}</span>
+                                </span>
+                            );
+                        }}
                     />
-                    <PersonDetails
+                    <ItemDetails
+                        personId={this.state.selectedPerson}
+                        getData={this.swapiService.getPerson}
+                    />
+                </div>{" "}
+                <div className="persons-persondetails">
+                    <ItemList
+                        onItemSelected={this.onPersonSelected}
+                        getData={this.swapiService.getAllPlanets}
+                        renderItem={item => item.name}
+                    />
+                    <ItemDetails
+                        personId={this.state.selectedPerson}
+                        getData={this.swapiService.getAllPlanets}
+                    />
+                </div>{" "}
+                <div className="persons-persondetails">
+                    <ItemList
+                        onItemSelected={this.onPersonSelected}
+                        getData={this.swapiService.getAllStarships}
+                        renderItem={item => item.name}
+                    />
+                    <ItemDetails
                         personId={this.state.selectedPerson}
                         getData={this.swapiService.getPerson}
                     />
                 </div>
-
-                <ItemList getData={this.swapiService.getAllPlanets} />
             </div>
         );
     }

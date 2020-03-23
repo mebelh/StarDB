@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import Spiner from "../loading/index";
 import "./person-details.css";
-import SwapiService from "../../services/services";
 
 export default class PersonDetails extends Component {
     state = {
         person: null
     };
-
-    ggg = new SwapiService();
 
     updatePerson = () => {
         const { personId, getData } = this.props;
