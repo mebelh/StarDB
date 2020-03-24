@@ -2,13 +2,25 @@ import React, { Component } from "react";
 import Spiner from "../loading/index";
 import "./item-details.css";
 
-export default class itemDetails extends Component {
+const Record = (item, field, label) => {
+    return (
+        <li className="list-group-item">
+            <span>{label}</span>
+            <span>{field}</span>
+        </li>
+    );
+};
+
+export { Record };
+
+export default class ItemDetails extends Component {
     state = {
-        item: null
+        item: null,
+        image: null
     };
 
     updateitem = () => {
-        const { itemId, getData } = this.props;
+        const { itemId, getData, getImgUrl } = this.props;
 
         if (!itemId) {
             return;
@@ -17,7 +29,7 @@ export default class itemDetails extends Component {
             item: null
         });
         getData(itemId).then(item => {
-            this.setState({ item });
+            this.setState({ item, image: getImgUrl(item) });
         });
     };
 
@@ -42,27 +54,15 @@ export default class itemDetails extends Component {
 
         const { id, name, gender, birthYear, eyeColor } = this.state.item;
 
+        // console.log(...this.props.children);
+
         return (
             <div className="item-details">
-                <img
-                    src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-                    alt="img"
-                />
+                <img src={this.state.image} alt="img" />
                 <div>
-                    <h2>{name}</h2>
-                    <ul className="">
-                        <li>
-                            <span>Gender: </span>
-                            <span>{gender}</span>
-                        </li>{" "}
-                        <li>
-                            <span>Birth year: </span>
-                            <span>{birthYear}</span>
-                        </li>{" "}
-                        <li>
-                            <span>Eye color: </span>
-                            <span>{eyeColor}</span>
-                        </li>
+                    <h4>{name}</h4>
+                    <ul className="list-group list-group-flush">
+                        {this.props.children}
                     </ul>
                 </div>
             </div>
